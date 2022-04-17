@@ -2,6 +2,7 @@ package com.yangtzelsl.ioc;
 
 
 import com.yangtzelsl.ioc.bean.Emp;
+import com.yangtzelsl.ioc.bean.Person;
 import com.yangtzelsl.ioc.config.SpringIocConfig;
 import com.yangtzelsl.ioc.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -48,5 +49,16 @@ public class SpringIocMain {
         Emp emp = context.getBean("emp", Emp.class);
 
         emp.add();
+    }
+
+    @Test
+    public void testConfigPerson() {
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext(SpringIocConfig.class);
+        Person person = context.getBean(Person.class);
+        System.out.println(person);
+
+        Object person1 = context.getBean("person");
+        System.out.println(person1);
     }
 }
